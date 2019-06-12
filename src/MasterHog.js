@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import Master from './assets/master-hog.png'
 import BabyHog from './BabyHog'
-// import offspring from './db.js'
+import offspring from './db.js'
 
 export default class MasterHog extends Component {
 
   constructor() {
     super()
     this.state = {
-      eyeColor: "blue",
+      eyeColor: "blue"
     }
   }
 
@@ -18,12 +18,10 @@ export default class MasterHog extends Component {
       eyeColor: e.target.value
     })
   }
-
-
+  
   render() {
     return (
       <div>
-
         <input type="radio" name="eyeColor" value="blue" onChange={this.changeEyeColor} />
         Blue<br></br>
         <input type="radio" name="eyeColor" value="sun" onChange={this.changeEyeColor} />
@@ -40,9 +38,7 @@ export default class MasterHog extends Component {
         </div>
         
         <ul className="hoglist">
-          <BabyHog />
-          <BabyHog />
-          <BabyHog />
+          {offspring.map(hog => <BabyHog hog = {hog} eyeColor= {this.state.eyeColor}/>)}
         </ul>
 
       </div>
